@@ -1,7 +1,7 @@
 ---
 name: swarm
-description: Autonomous agent-swarm orchestration for big multi-part work of any kind - software, game development, business operations, content, research. Use it when a task is multi-part, spans many files, assets or sources, or would go faster in parallel (features with several pieces, sweeps over many items, audits, migrations, market or competitor research, campaign drafts). Also use it when the user says swarm, fan out, parallelize, or "stop making me manage sessions". Swappable team packs (general, gamedev, business, software, content, research, or your own) set the roles, rules and verifiers; /swarm use <pack> switches, /swarm new <name> creates a custom one. Claude picks the execution tier itself: inline, subagents, a Workflow swarm (build -> verify -> fix), or a separate session. Invoke with /swarm <task>, or let Claude pick it up on its own.
-argument-hint: <task> | use <pack> | packs | new <name> "<what the team does>" | edit <name> | export <name>
+description: 'Autonomous agent-swarm orchestration for big multi-part work of any kind - software, game development, business operations, content, research. Use it when a task is multi-part, spans many files, assets or sources, or would go faster in parallel (features with several pieces, sweeps over many items, audits, migrations, market or competitor research, campaign drafts). Also use it when the user says swarm, fan out, parallelize, or "stop making me manage sessions". Swappable team packs (general, gamedev, business, software, content, research, or your own) set the roles, rules and verifiers; /swarm use <pack> switches, /swarm new <name> creates a custom one. Claude picks the execution tier itself: inline, subagents, a Workflow swarm (build -> verify -> fix), or a separate session. Invoke with /swarm <task>, or let Claude pick it up on its own.'
+argument-hint: '<task> | use <pack> | packs | new <name> "<what the team does>" | edit <name> | export <name> | auto on|off'
 ---
 
 # Swarm
@@ -144,6 +144,7 @@ When `$ARGUMENTS` starts with one of these words, run the command instead of a s
   6. With `--agents`, also write one agent file per role to `~/.claude/agents/<name>-<role>.md`. Each file has frontmatter (name, description, `model: inherit`, a `tools:` line copied from the role's base type), then the role's rules and the guardrails. Say that these register on the next session start; until then the pack runs on the base types.
 - `edit <name>`: open the pack, apply the change the user describes, and save it in the same scope. To change a built-in pack, save a copy in `~/.claude/swarm-packs/` (with `extends: <name>` when only a few roles change).
 - `export <name>`: print the pack file (and its quality file) so the user can share or commit it. Before printing, check it for paths, names and keys that look personal, and point them out.
+- `auto on|off [--global]`: set `"auto": true` or `false` in `.claude/swarm.json` in the project (with `--global`, in `~/.claude/swarm.json`), keeping every other key. With auto on, the plugin's session-start hook tells Claude to use this skill for every multi-part task without being asked; a project setting wins over the global one. Say that it takes effect from the next session (or after /clear), and that small tasks still run inline. `auto` alone reports whether it is on, and from which file.
 
 ## 5b. Context in briefs
 

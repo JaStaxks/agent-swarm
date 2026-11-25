@@ -38,6 +38,7 @@ A **pack** is a team of roles for one kind of work. Each role has a base agent t
 /swarm new bakery "..." --project --agents     save in the project, and also write agent files
 /swarm edit bakery                             change a pack
 /swarm export bakery                           print it to share (checks for personal data first)
+/swarm auto on --global                        always use the swarm for multi-part work
 ```
 
 **Custom packs** go in `~/.claude/swarm-packs/<name>.md` (yours) or `<project>/.claude/swarm-packs/<name>.md` (committed with the project). A pack can `extends:` a built-in one and override only the roles it changes, add a `## Context` section with project paths and facts, and point `quality:` at its own quality bar. The format is in [`skills/swarm/packs/README.md`](skills/swarm/packs/README.md).
@@ -62,6 +63,20 @@ extends: business
 ## Guardrails
 - Never send, buy or post without the owner's OK.
 ```
+
+## Auto mode: use it without the command
+
+The skill already loads on its own when a task clearly needs it. To make that the rule instead of Claude's call, turn on auto mode:
+
+```
+/swarm auto on --global     every project, from your next session
+/swarm auto on              this project only
+/swarm auto off             back to normal
+```
+
+This sets `"auto": true` in `~/.claude/swarm.json` (or the project's `.claude/swarm.json`, which wins). A session-start hook in the plugin reads it and tells Claude to send every multi-part task through the swarm. Small tasks still run inline. Auto mode is off until you turn it on; with it off, the hook prints nothing.
+
+You can also edit the file by hand: `{"pack": "business", "auto": true}`.
 
 ## Agents and templates
 

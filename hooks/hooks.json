@@ -1,0 +1,16 @@
+{
+  "description": "agent-swarm auto mode: when \"auto\": true is set in .claude/swarm.json or ~/.claude/swarm.json, tells Claude at session start to route multi-part work through /swarm.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/auto-mode.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

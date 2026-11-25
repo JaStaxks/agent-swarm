@@ -3,12 +3,13 @@
   "owner": {
     "name": "JaStaxks"
   },
+  "description": "agent-swarm: a Claude Code plugin for autonomous agent swarms with switchable team packs.",
   "plugins": [
     {
       "name": "agent-swarm",
       "source": "./",
       "description": "Autonomous agent swarm with switchable team packs (general, game dev, business, software, content, research) and custom packs you generate. Claude picks the tier (inline, subagents, Workflow swarm, or a session), runs build -> verify -> fix swarms with paired verifiers, and keeps costs down with lean profiles and trimmed agents.",
-      "version": "0.4.0"
+      "version": "0.5.0"
     }
   ]
 }

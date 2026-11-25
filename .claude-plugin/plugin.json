@@ -1,6 +1,6 @@
 {
   "name": "agent-swarm",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Autonomous agent swarm with switchable team packs (general, game dev, business, software, content, research) and custom packs you generate. Claude picks the tier (inline, subagents, Workflow swarm, or a session), runs build -> verify -> fix swarms with paired verifiers, and keeps costs down with lean profiles and trimmed agents.",
   "author": {
     "name": "JaStaxks"
@@ -17,7 +17,8 @@
     "game-dev",
     "business",
     "research",
-    "content"
+    "content",
+    "auto-mode"
   ],
   "homepage": "https://github.com/JaStaxks/agent-swarm",
   "repository": "https://github.com/JaStaxks/agent-swarm",
