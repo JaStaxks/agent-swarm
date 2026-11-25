@@ -20,5 +20,6 @@
     "content"
   ],
   "homepage": "https://github.com/JaStaxks/agent-swarm",
-  "repository": "https://github.com/JaStaxks/agent-swarm"
+  "repository": "https://github.com/JaStaxks/agent-swarm",
+  "icon": "./.claude-plugin/icon.png"
 }

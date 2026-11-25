@@ -1,3 +1,5 @@
+<img src=".claude-plugin/icon.png" alt="agent-swarm icon" width="128" align="right">
+
 # agent-swarm
 
 A Claude Code skill that decides how big work should run, then runs it with a team built for the job. You stop managing sessions and saying "use a subagent".
